@@ -1,5 +1,6 @@
 package uz.turgunboyevjurabek.mvvm.ViewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import uz.turgunboyevjurabek.mvvm.Madels.Data
@@ -26,10 +27,10 @@ class Mvvm :ViewModel(){
         data.count2++
     }
 
-    fun getData():Int{
-     return data.count
+    fun getData():LiveData<Int>{
+     return liveData
     }
-    fun getData2():Int{
-     return data.count2
+    fun getData2():LiveData<Int>{
+     return liveData2
     }
 }
