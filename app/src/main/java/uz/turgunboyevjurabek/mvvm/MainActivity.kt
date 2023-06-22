@@ -2,6 +2,7 @@ package uz.turgunboyevjurabek.mvvm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import uz.turgunboyevjurabek.mvvm.ViewModel.Mvvm
 import uz.turgunboyevjurabek.mvvm.databinding.ActivityMainBinding
@@ -16,17 +17,21 @@ class MainActivity : AppCompatActivity() {
 
         mvvm=ViewModelProvider(this).get(Mvvm::class.java)
 
-        binding.textView.text=mvvm.getData().toString()
-        binding.textView2.text=mvvm.getData2().toString()
-        binding.textView.setOnClickListener {
+        binding.layner1.setOnClickListener {
             mvvm.addClick()
-            binding.textView.text=mvvm.getData().toString()
         }
 
-        binding.textView2.setOnClickListener {
+        binding.layner2.setOnClickListener {
             mvvm.addClick2()
-            binding.textView2.text=mvvm.getData2().toString()
         }
+        mvvm.getData().observe(this, Observer {
+            binding.textView.text=it.toString()
+        })
+
+        mvvm.liveData2.observe(this, Observer {
+            binding.textView2.text=it.toString()
+        })
+
 
     }
 }

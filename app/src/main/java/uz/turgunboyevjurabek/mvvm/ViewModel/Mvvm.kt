@@ -23,7 +23,7 @@ class Mvvm :ViewModel(){
 
     fun addClick2(){
         click2++
-        liveData.postValue(click2)
+        liveData2.postValue(click2)
         data.count2++
     }
 
